@@ -8,22 +8,40 @@
 </head>
 <body>
 
-    <h1>Hello, I'm [Praveenkumar A]!</h1>
+    <h1>Hello, I'm PRAVEENKUMAR A!</h1>
     <p>Welcome to my website. Thanks for visiting!</p>
 
     <script>
         // Log information when the page is loaded
         console.log('Page loaded at:', new Date());
-
-        // You can add more information to log, such as user agent, referrer, etc.
         console.log('User Agent:', navigator.userAgent);
         console.log('Referrer:', document.referrer);
 
-        // Send this information to a server or a logging service if needed.
-        // For privacy reasons, avoid logging sensitive user information.
+        // Collect logs in a string
+        var logData = 'Page loaded at: ' + new Date() + '\n';
+        logData += 'User Agent: ' + navigator.userAgent + '\n';
+        logData += 'Referrer: ' + document.referrer + '\n';
+
+        // Create a Blob containing the log data
+        var blob = new Blob([logData], { type: 'text/plain' });
+
+        // Create a link to download the log file
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'user_logs.txt';
+
+        // Append the link to the document
+        document.body.appendChild(a);
+
+        // Trigger a click on the link to initiate the download
+        a.click();
+
+        // Remove the link from the document
+        document.body.removeChild(a);
     </script>
 
     <!-- Include any other necessary scripts, such as analytics scripts -->
 
 </body>
 </html>
+
